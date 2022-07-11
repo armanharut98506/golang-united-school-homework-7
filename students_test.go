@@ -208,7 +208,7 @@ func TestMatrixSet(t *testing.T) {
 	}
 
 	result = m.Set(3, 1, 10)
-	if !result {
+	if result {
 		t.Error("Set() returned true when out of boundary index was provided")
 	}
 }

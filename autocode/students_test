@@ -5,6 +5,7 @@ import (
 	"testing"
 	"time"
 	"strings"
+	"reflect"
 )
 
 // DO NOT EDIT THIS FUNCTION
@@ -161,3 +162,36 @@ func TestMatrixNew(t *testing.T) {
 	}
 }
 
+func TestMatrixRows(t *testing.T) {
+	ms := "1 2 \n 3 4"
+	m, err := New(ms)
+	if err != nil {
+		t.Fatal("Error creating the matrix")
+	}
+
+	result := m.Rows()
+
+	if !reflect.DeepEqual(result, [][]int{
+		{1, 2},
+		{3, 4},
+	}) {
+		t.Errorf("Incorrect data returned")
+	}
+}
+
+func TestMatrixCols(t *testing.T) {
+	ms := "1 2 \n 3 4"
+	m, err := New(ms)
+	if err != nil {
+		t.Fatal("Error creating the matrix")
+	}
+
+	result := m.Cols()
+
+	if !reflect.DeepEqual(result, [][]int{
+		{1, 3},
+		{2, 4},
+	}) {
+		t.Errorf("Incorrect data returned")
+	}
+}

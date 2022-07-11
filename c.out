@@ -24,6 +24,6 @@ coverage/toBeTested.go:91.32,93.30 2 1
 coverage/toBeTested.go:99.2,99.13 1 1
 coverage/toBeTested.go:93.30,95.31 2 1
 coverage/toBeTested.go:95.31,97.4 1 1
-coverage/toBeTested.go:103.48,104.58 1 0
-coverage/toBeTested.go:107.2,108.13 2 0
-coverage/toBeTested.go:104.58,106.3 1 0
+coverage/toBeTested.go:103.48,104.58 1 1
+coverage/toBeTested.go:107.2,108.13 2 1
+coverage/toBeTested.go:104.58,106.3 1 1

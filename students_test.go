@@ -20,6 +20,8 @@ func init() {
 	}
 }
 
+var ms = "1 2 \n 3 4"
+
 // WRITE YOUR CODE BELOW
 func TestPeopleLen(t *testing.T) {
 	p := Person{
@@ -132,7 +134,6 @@ func TestPeopleSwap(t *testing.T) {
 }
 
 func TestMatrixNew(t *testing.T) {
-	ms := "1 2 \n 3 4"
 	m, err := New(ms)
 	if err != nil {
 		t.Fatal(err)
@@ -163,10 +164,10 @@ func TestMatrixNew(t *testing.T) {
 }
 
 func TestMatrixRows(t *testing.T) {
-	ms := "1 2 \n 3 4"
+	ms = "1 2 \n 3 4"
 	m, err := New(ms)
 	if err != nil {
-		t.Fatal("Error creating the matrix")
+		t.Fatal("Error when creating the matrix")
 	}
 
 	result := m.Rows()
@@ -180,10 +181,9 @@ func TestMatrixRows(t *testing.T) {
 }
 
 func TestMatrixCols(t *testing.T) {
-	ms := "1 2 \n 3 4"
 	m, err := New(ms)
 	if err != nil {
-		t.Fatal("Error creating the matrix")
+		t.Fatal("Error when creating the matrix")
 	}
 
 	result := m.Cols()
@@ -193,5 +193,22 @@ func TestMatrixCols(t *testing.T) {
 		{2, 4},
 	}) {
 		t.Errorf("Incorrect data returned")
+	}
+}
+
+func TestMatrixSet(t *testing.T) {
+	m, err := New(ms)
+	if err != nil {
+		t.Fatal("Error when creating the matrix")
+	}
+
+	result := m.Set(1, 1, 10)
+	if result && m.data[1 * m.cols + 1] != 10 {
+		t.Error("Value was not set: expected 10, got ", m.data[1 * m.cols + 1])
+	}
+
+	result = m.Set(3, 1, 10)
+	if !result {
+		t.Error("Set() returned true when out of boundary index was provided")
 	}
 }
